@@ -24,7 +24,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card bg-hitam2">
             <div class="card-header">
               <a href="{{ asset('') }}siswa/create" class="btn btn-primary">Tambah Siswa</a>
 

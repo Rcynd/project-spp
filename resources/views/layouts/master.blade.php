@@ -25,6 +25,15 @@
   <link rel="stylesheet" href="{{ asset('') }}plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}plugins/summernote/summernote-bs4.min.css">
+  {{-- CSS Buatan --}}
+  <style>
+    .bg-hitam{
+      background-color: rgba(107, 44, 209, 0.2)
+    }
+    .bg-hitam2{
+      background-color: rgba(238, 235, 245, 0.7)
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -42,7 +51,7 @@
   @include('layouts.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-hitam">
     @yield('content')
   </div>
   <!-- /.content-wrapper -->

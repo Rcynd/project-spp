@@ -34,6 +34,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+          @can('petugas')
           <li class="nav-item">
             <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }} ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -42,6 +43,7 @@
               </p>
             </a>
           </li>
+          @endcan
           @can('admin')
           <li class="nav-item">
             <a href="/siswa" class="nav-link {{ Request::is('siswa*') ? 'active' : '' }} ">

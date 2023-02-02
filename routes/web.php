@@ -9,6 +9,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\HistoriController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,11 @@ use App\Http\Controllers\HistoriController;
 
 
 // Login
-Auth::routes();
+// Auth::routes();
 
 Route::middleware('auth')->group(function(){
     // Dashboard
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/home', [HomeController::class, 'index']);
+    // Route::get('/', [HomeController::class, 'index'])->name('home');
     
     
     // Histori Pembayaran
@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function(){
     
 });
 Route::middleware('petugas')->group(function(){
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     // Transaksi Pembayaran
     Route::get('/transaksi', [TransaksiController::class, 'index']);
     Route::get('/transaksi/create', [TransaksiController::class, 'create']);
@@ -46,7 +47,7 @@ Route::middleware('petugas')->group(function(){
     Route::post('/transaksi/reset/{transaksi:id}', [TransaksiController::class, 'reset']);
     Route::get('/transaksi/hapus/{transaksi:id}', [TransaksiController::class, 'destroy']);
     
-
+    
 });
 Route::middleware('admin')->group(function(){
     // Data Siswa
@@ -64,7 +65,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/petugas/edit/{user:id}', [PetugasController::class, 'edit']);
     Route::post('/petugas/edit/{user:id}', [PetugasController::class, 'update']);
     Route::get('/petugas/hapus/{user:id}', [PetugasController::class, 'destroy']);
-
+    
     // Data Kelas
     Route::get('/kelas', [KelasController::class, 'index']);
     Route::get('/kelas/create', [KelasController::class, 'create']);
@@ -81,3 +82,8 @@ Route::middleware('admin')->group(function(){
     Route::post('/spp/edit/{spp:id}', [SppController::class, 'update']);
     Route::get('/spp/hapus/{spp:id}', [SppController::class, 'destroy']);
 });
+// Route Login
+Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);

@@ -29,6 +29,7 @@ use App\Http\Controllers\LoginController;
 Route::middleware('auth')->group(function(){
     // Dashboard
     // Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     
     
     // Histori Pembayaran
@@ -37,7 +38,6 @@ Route::middleware('auth')->group(function(){
     
 });
 Route::middleware('petugas')->group(function(){
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     // Transaksi Pembayaran
     Route::get('/transaksi', [TransaksiController::class, 'index']);
     Route::get('/transaksi/create', [TransaksiController::class, 'create']);

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-danger elevation-4">
+<aside class="main-sidebar sidebar-light bg-sidebar elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
         <img src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -36,7 +36,7 @@
                with font-awesome or any other icon font library -->
           @can('petugas')
           <li class="nav-item">
-            <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }} ">
+            <a href="/" class="nav-link {{ Request::is('dashboard*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -46,7 +46,7 @@
           @endcan
           @can('admin')
           <li class="nav-item">
-            <a href="/siswa" class="nav-link {{ Request::is('siswa*') ? 'active' : '' }} ">
+            <a href="/siswa" class="nav-link {{ Request::is('siswa*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-male"></i>
               <p>
                 Data Siswa
@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/petugas" class="nav-link {{ Request::is('petugas*') ? 'active' : '' }} ">
+            <a href="/petugas" class="nav-link {{ Request::is('petugas*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
                 Data Petugas
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/kelas" class="nav-link {{ Request::is('kelas*') ? 'active' : '' }} ">
+            <a href="/kelas" class="nav-link {{ Request::is('kelas*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Data kelas
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/spp" class="nav-link {{ Request::is('spp*') ? 'active' : '' }} ">
+            <a href="/spp" class="nav-link {{ Request::is('spp*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-scroll"></i>
               <p>
                 Data SPP
@@ -80,7 +80,7 @@
           @endcan
           @can('petugas')
           <li class="nav-item">
-            <a href="/transaksi" class="nav-link {{ Request::is('transaksi*') ? 'active' : '' }} ">
+            <a href="/transaksi" class="nav-link {{ Request::is('transaksi*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-credit-card"></i>
               <p>
                 transaksi pembayaran
@@ -89,7 +89,7 @@
           </li>
           @endcan
           <li class="nav-item">
-            <a href="/histori" class="nav-link {{ Request::is('histori*') ? 'active' : '' }} ">
+            <a href="/histori" class="nav-link {{ Request::is('histori*') ? 'bg-light' : '' }} ">
               <i class="nav-icon fas fa-history"></i>
               <p>
                 History Pembayaran

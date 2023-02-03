@@ -25,10 +25,10 @@
   transition: all 0.2s ease-in-out;
 }
 .bg-hitam{
-  background-color: rgba(107, 44, 209, 0.4)
+  background-color: rgba(86, 128, 207, 0.4)
 }
 .bg-hitam2{
-      background-color: rgba(238, 235, 245, 0.3)
+      background-color: rgba(35, 114, 128, 0.3)
     }
   </style>
   <body class="bg-hitam">

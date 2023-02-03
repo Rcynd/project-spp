@@ -27,11 +27,44 @@
   <link rel="stylesheet" href="{{ asset('') }}plugins/summernote/summernote-bs4.min.css">
   {{-- CSS Buatan --}}
   <style>
+    .glass-card{
+  background: rgba(238, 235, 245, 0.7);
+  border-radius: 20px;
+  border-left: 1px solid rgba(238, 235, 245, 0.7);
+  border-top: 1px solid rgba(238, 235, 245, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
     .bg-hitam{
-      background-color: rgba(107, 44, 209, 0.2)
+      background-color: rgba(86, 128, 207, 0.4)
+    }
+    .bg-sidebar{
+      background-color: rgba(166, 187, 190, 0.9)
     }
     .bg-hitam2{
       background-color: rgba(238, 235, 245, 0.7)
+    }
+    .tombol-tambah{
+      background: rgba(86, 128, 207, 0.4);
+  border-radius: 20px;
+  border-left: 1px solid rgba(86, 128, 207, 0.4);
+  border-top: 1px solid rgba(86, 128, 207, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+    }
+    .tombol-tambah:hover{
+      background: rgba(238, 235, 245, 0.7);
+      transition: ease-in;
     }
   </style>
 </head>

@@ -11,6 +11,7 @@ class SiswaController extends Controller
     public function index(){
         return view('data-siswa',[
             'siswas' => Siswa::orderBy('nisn','asc')->filter(request(['search']))->paginate(8)->withQueryString(),
+            'kelass' => Kelas::all(),
         ]);
     }
     public function create(){

@@ -23,7 +23,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            if (auth()->user()->level == 'petugas') {
+                return redirect()->intended('/transaksi');
+            } else if(auth()->user()->level == 'siswa'){
+                return redirect()->intended('/histori');
+            }
+            return redirect()->intended('/siswa');
         }
 
         return back()->with('loginError', 'Login failed');

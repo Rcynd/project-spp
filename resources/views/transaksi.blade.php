@@ -26,7 +26,7 @@
         <div class="col-12">
           <div class="card glass-card">
             <div class="card-header">
-              <a href="{{ asset('') }}transaksi/create" class="btn btn-primary">Tambah Transaksi</a>
+              <a href="{{ asset('') }}transaksi/create" class="btn float-left tombol-tambah mt-2">Tambah Transaksi</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/transaksi" method="get">
                     @csrf
@@ -47,7 +47,7 @@
                     <th>Tahun/Nominal yang harus dibayar</th>
                     <th>Jumlah bayar</th>
                     <th>Status</th>
-                    <th></th>
+                    <th class="text-right">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,8 +65,8 @@
                             <p class="text-danger">BELUM LUNAS</p>
                         @endif
                       </td>
-                      <td class="d-flex">
-                        <a class="nav-link text-dark btn btn-warning p-1" data-toggle="dropdown" href="#" aria-expanded="false">Aksi</a>
+                      <td class="d-flex justify-content-end">
+                        <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                           @if ($transaksi->spp->nominal == $transaksi->jumlah_bayar)
                           <form class="m-0 p-0" method="post" action="/transaksi/reset/{{ $transaksi->id }}" class="mb-5" enctype="multipart/form-data">

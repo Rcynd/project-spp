@@ -26,7 +26,7 @@
         <div class="col-12">
           <div class="card glass-card">
             <div class="card-header">
-              <a href="{{ asset('') }}kelas/create" class="btn btn-primary">Tambah Kelas</a>
+              <a href="{{ asset('') }}kelas/create" class="btn float-left tombol-tambah mt-2">Tambah Kelas</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/kelas" method="get">
                     @csrf
@@ -43,7 +43,7 @@
                   <tr>
                     <th>Kelas</th>
                     <th>Kompetensi Keahlian</th>
-                    <th></th>
+                    <th class="text-right">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,8 +51,8 @@
                     <tr>
                       <td>{{ $kelas->nama_kelas }}</td>
                       <td>{{ $kelas->kompetensi_keahlian }}</td>
-                      <td class="d-flex float-right">
-                        <a class="nav-link text-dark btn btn-warning p-1" data-toggle="dropdown" href="#" aria-expanded="false">Aksi</a>
+                      <td class="d-flex justify-content-end">
+                        <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                             <a href="{{ asset('') }}kelas/edit/{{ $kelas->id }}" class="dropdown-item">
                                 Edit

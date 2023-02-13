@@ -26,7 +26,7 @@
         <div class="col-12">
           <div class="card glass-card">
             <div class="card-header">
-              <a href="{{ asset('') }}spp/create" class="btn btn-primary">Tambah SPP</a>
+              <a href="{{ asset('') }}spp/create" class="btn float-left tombol-tambah mt-2">Tambah SPP</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/spp" method="get">
                     @csrf
@@ -43,7 +43,7 @@
                   <tr>
                     <th>Tahun</th>
                     <th>Nominal</th>
-                    <th></th>
+                    <th class="text-right">aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,8 +51,8 @@
                     <tr>
                       <td>{{ $spp->tahun }}</td>
                       <td>{{ $spp->nominal }}</td>
-                      <td class="d-flex float-right">
-                        <a class="nav-link text-dark btn btn-warning p-1" data-toggle="dropdown" href="#" aria-expanded="false">Aksi</a>
+                      <td class="d-flex justify-content-end">
+                        <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                             <a href="{{ asset('') }}spp/edit/{{ $spp->id }}" class="dropdown-item">
                                 Edit

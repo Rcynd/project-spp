@@ -13,10 +13,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card glass-card">
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <div class="card card-primary">
+                <div class="">
                     <!-- form start -->
                     <form method="post" action="/transaksi/create" class="mb-5" enctype="multipart/form-data">
                         @csrf

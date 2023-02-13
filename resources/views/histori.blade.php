@@ -24,7 +24,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card glass-card">
             <div class="card-header">
 
                   <form class="input-group input-group-sm col-lg-12 mr-2 mt-2 float-right" action="/histori" method="post">

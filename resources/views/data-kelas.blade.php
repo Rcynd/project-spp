@@ -24,7 +24,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card glass-card">
             <div class="card-header">
               <a href="{{ asset('') }}kelas/create" class="btn btn-primary">Tambah Kelas</a>
 

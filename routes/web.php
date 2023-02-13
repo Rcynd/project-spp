@@ -29,7 +29,7 @@ use App\Http\Controllers\LoginController;
 Route::middleware('auth')->group(function(){
     // Dashboard
     // Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+    // Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     
     
     // Histori Pembayaran

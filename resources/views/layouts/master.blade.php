@@ -35,7 +35,6 @@
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-  text-align: center;
   position: relative;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;

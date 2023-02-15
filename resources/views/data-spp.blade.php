@@ -52,7 +52,7 @@
                     @foreach ($spps as $spp)
                     <tr>
                       <td>{{ $spp->tahun }}</td>
-                      <td>{{ number_format($spp->nominal) }}</td>
+                      <td>Rp.{{ number_format($spp->nominal) }}</td>
                       <td>{{ $spp->kelas->nama_kelas }}</td>
                       <td class="d-flex justify-content-end">
                         <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>

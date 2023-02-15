@@ -63,7 +63,7 @@
                       <td>{{ $transaksi->spp->kelas->nama_kelas }}</td>
                       <td>{{ $transaksi->tgl_bayar }}</td>
                       <td>{{ $transaksi->spp->tahun }} | Rp{{number_format( $transaksi->spp->nominal) }}</td>
-                      <td>{{ number_format($transaksi->jumlah_bayar) }}</td>
+                      <td>Rp{{ number_format($transaksi->jumlah_bayar) }}</td>
                       <td>{{ $transaksi->bulan_dibayar }}</td>
                       <td>
                         @if ($transaksi->spp->nominal == $transaksi->jumlah_bayar)
@@ -86,6 +86,11 @@
                             <a href="{{ asset('') }}transaksi/edit/{{ $transaksi->id }}" class="dropdown-item">
                               Bayar
                             </a>
+                          @endif
+                          @if ($transaksi->jumlah_bayar == 0)
+                          <a href="{{ asset('') }}transaksi/lunas/{{ $transaksi->id }}" class="dropdown-item" onclick="return confirm(' Lunasi Transaksi?')">
+                              Bayar Lunas
+                          </a>
                           @endif
                             <a href="{{ asset('') }}transaksi/hapus/{{ $transaksi->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                 Hapus

@@ -9,7 +9,7 @@ class KelasController extends Controller
 {
     public function index(){
         return view('data-kelas',[
-            'kelass' => Kelas::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'kelass' => Kelas::latest()->filter(request(['search']))->paginate(8)->withQueryString()
         ]);
         // 
         // orderBy('kompetensi_keahlian','asc')

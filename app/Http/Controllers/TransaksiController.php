@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index(){
         return view('transaksi',[
-            'transaksis' => Transaksi::latest()->filter(request(['search']))->paginate(8)->withQueryString(),
+            'transaksis' => Transaksi::latest()->filter(request(['search']))->paginate(12)->withQueryString(),
             'siswass' => Siswa::orderBy('nama','asc')->get(),
         ]);
     }
@@ -78,6 +78,16 @@ class TransaksiController extends Controller
             'tgl_bayar' => now(),
             'id_spp' => $validateData['id_spp'],
             'id_petugas' => $validateData['id_petugas'],
+        ]);
+        return redirect('/transaksi')->with('sukses','Transaksi berhasil diBayar!');
+    }
+    public function bayarLunas(Request $request, $id){
+        $bayar = Transaksi::where('id',$id)->first();
+        Transaksi::where('id',$id)->update([
+            'jumlah_bayar' => $bayar->spp->nominal,
+            'tgl_bayar' => now(),
+            'id_spp' => $bayar->spp->id,
+            'id_petugas' => auth()->user()->id,
         ]);
         return redirect('/transaksi')->with('sukses','Transaksi berhasil diBayar!');
     }

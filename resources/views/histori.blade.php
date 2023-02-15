@@ -61,8 +61,9 @@
                     <th>Petugas</th>
                     <th>Siswa</th>
                     <th>Tanggal bayar</th>
-                    <th>Tahun/Nominal yang harus dibayar</th>
+                    <th>Tahun/Nominal</th>
                     <th>Jumlah bayar</th>
+                    <th>bulan dibayar</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -73,7 +74,8 @@
                       <td>{{ $transaksi->siswa->nama }}</td>
                       <td>{{ $transaksi->tgl_bayar }}</td>
                       <td>{{ $transaksi->spp->tahun }} | Rp{{number_format( $transaksi->spp->nominal) }}</td>
-                      <td>{{ number_format($transaksi->jumlah_bayar) }}</td>
+                      <td>Rp.{{ number_format($transaksi->jumlah_bayar) }}</td>
+                      <td>{{$transaksi->bulan_dibayar }}</td>
                       <td>
                         @if ($transaksi->spp->nominal == $transaksi->jumlah_bayar)
                             <p class="text-success">LUNAS</p>

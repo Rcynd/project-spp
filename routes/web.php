@@ -46,6 +46,7 @@ Route::middleware('petugas')->group(function(){
     Route::post('/transaksi/edit/{transaksi:id}', [TransaksiController::class, 'update']);
     Route::post('/transaksi/reset/{transaksi:id}', [TransaksiController::class, 'reset']);
     Route::get('/transaksi/hapus/{transaksi:id}', [TransaksiController::class, 'destroy']);
+    Route::get('/transaksi/lunas/{transaksi:id}', [TransaksiController::class, 'bayarLunas']);
     
     
 });

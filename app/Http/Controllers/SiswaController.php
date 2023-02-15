@@ -16,6 +16,12 @@ class SiswaController extends Controller
             'kelass' => Kelas::all(),
         ]);
     }
+    public function cetakSiswa(){
+        return view('cetak.data-siswa',[
+            'siswas' => Siswa::get(),
+            'kelass' => Kelas::get(),
+        ]);
+    }
     public function create(){
         return view('data-siswa-create',[
             'kelass' => Kelas::all(),

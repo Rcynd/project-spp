@@ -53,7 +53,7 @@
                             @if (old('id_siswa') == $siswa->id)
                             <option value="{{ $siswa->id }},{{ $siswa->spp->id }}" selected>{{ $siswa->nama }}</option>
                             @else
-                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}">{{ $siswa->nama }} | {{ $siswa->spp->kelas->nama_kelas }} | Rp.{{ number_format($siswa->spp->nominal) }} | bayaran perbulan = Rp.{{ number_format($siswa->spp->nominal / 12) }}</option>
+                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}">{{ $siswa->nama }} | {{ $siswa->spp->kelas->nama_kelas }} | bulanan Rp.{{ number_format($siswa->spp->nominal) }}</option>
                             @endif
                             @endforeach
                         </select>

@@ -13,6 +13,11 @@ class PetugasController extends Controller
             'petugass' => User::where('level','petugas')->orderBy('id','desc')->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
+    public function cetakPetugas(){
+        return view('cetak.data-petugas',[
+            'petugass' => User::where('level', 'petugas')->get()
+        ]);
+    }
     public function create(){
         return view('data-petugas-create',[
         ]);

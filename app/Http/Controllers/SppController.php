@@ -13,6 +13,11 @@ class SppController extends Controller
             'spps' => Spp::orderBy('tahun','asc')->filter(request(['search']))->paginate(8)->withQueryString(),
         ]);
     }
+    public function cetakSpp(){
+        return view('cetak.data-spp',[
+            'spps' => Spp::get()
+        ]);
+    }
     public function create(){
         return view('data-spp-create',[
             'kelass' => Kelas::get(),

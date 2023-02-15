@@ -14,6 +14,11 @@ class KelasController extends Controller
         // 
         // orderBy('kompetensi_keahlian','asc')
     }
+    public function cetakKelas(){
+        return view('cetak.data-kelas',[
+            'kelass' => Kelas::get()
+        ]);
+    }
     public function create(){
         return view('data-kelas-create',[
         ]);

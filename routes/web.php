@@ -52,6 +52,7 @@ Route::middleware('petugas')->group(function(){
 Route::middleware('admin')->group(function(){
     // Data Siswa
     Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/cetak-siswa', [SiswaController::class, 'CetakSiswa']);
     Route::get('/siswa/create', [SiswaController::class, 'create']);
     Route::post('/siswa/create', [SiswaController::class, 'store']);
     Route::get('/siswa/edit/{siswa:nisn}', [SiswaController::class, 'edit']);
@@ -60,6 +61,7 @@ Route::middleware('admin')->group(function(){
     
     // Data Petugas
     Route::get('/petugas', [PetugasController::class, 'index']);
+    Route::get('/cetak-petugas', [PetugasController::class, 'CetakPetugas']);
     Route::get('/petugas/create', [PetugasController::class, 'create']);
     Route::post('/petugas/create', [PetugasController::class, 'store']);
     Route::get('/petugas/edit/{user:id}', [PetugasController::class, 'edit']);
@@ -68,6 +70,7 @@ Route::middleware('admin')->group(function(){
     
     // Data Kelas
     Route::get('/kelas', [KelasController::class, 'index']);
+    Route::get('/cetak-kelas', [KelasController::class, 'CetakKelas']);
     Route::get('/kelas/create', [KelasController::class, 'create']);
     Route::post('/kelas/create', [KelasController::class, 'store']);
     Route::get('/kelas/edit/{kelas:id}', [KelasController::class, 'edit']);
@@ -76,11 +79,14 @@ Route::middleware('admin')->group(function(){
 
     // Data SPP
     Route::get('/spp', [SppController::class, 'index']);
+    Route::get('/cetak-spp', [SppController::class, 'CetakSpp']);
     Route::get('/spp/create', [SppController::class, 'create']);
     Route::post('/spp/create', [SppController::class, 'store']);
     Route::get('/spp/edit/{spp:id}', [SppController::class, 'edit']);
     Route::post('/spp/edit/{spp:id}', [SppController::class, 'update']);
     Route::get('/spp/hapus/{spp:id}', [SppController::class, 'destroy']);
+
+    Route::post('/cetak-transaksi', [TransaksiController::class, 'CetakTransaksi']);
 });
 // Route Login
 Route::get('/', [LoginController::class, 'index'])->middleware('guest');

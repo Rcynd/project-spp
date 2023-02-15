@@ -13,6 +13,13 @@ class TransaksiController extends Controller
     public function index(){
         return view('transaksi',[
             'transaksis' => Transaksi::latest()->filter(request(['search']))->paginate(8)->withQueryString(),
+            'siswass' => Siswa::orderBy('nama','asc')->get(),
+        ]);
+    }
+    public function cetakTransaksi(Request $request){
+        $siswa = $request->id_siswa;
+        return view('cetak.data-transaksi',[
+            'transaksis' => Transaksi::where('id_siswa',$siswa)->get(),
         ]);
     }
     public function create(){

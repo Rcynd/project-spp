@@ -21,7 +21,7 @@ class SppSeeder extends Seeder
             Spp::create([
                 'id_kelas' => $i - 2022,
                 'tahun' => "2023",
-                'nominal' => fake()->unique()->numerify('6#00000'),
+                'nominal' => fake()->unique()->numerify('6#0000'),
             ]);
         }
     }

@@ -27,6 +27,7 @@
           <div class="card glass-card">
             <div class="card-header">
               <a href="{{ asset('') }}petugas/create" class="btn float-left tombol-tambah mt-2">Tambah Petugas</a>
+              <a href="{{ asset('') }}cetak-petugas" target="blank_" class="btn ml-2 tombol-tambah mt-2">Cetak Petugas</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/petugas" method="get">
                     @csrf

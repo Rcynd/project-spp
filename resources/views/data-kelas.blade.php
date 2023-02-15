@@ -27,6 +27,7 @@
           <div class="card glass-card">
             <div class="card-header">
               <a href="{{ asset('') }}kelas/create" class="btn float-left tombol-tambah mt-2">Tambah Kelas</a>
+              <a href="{{ asset('') }}cetak-kelas" target="blank_" class="btn ml-2 tombol-tambah mt-2">Cetak Kelas</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/kelas" method="get">
                     @csrf

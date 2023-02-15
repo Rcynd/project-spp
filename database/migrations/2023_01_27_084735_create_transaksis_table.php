@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('id_siswa',10);
             $table->foreignId('id_kelas',10)->nullable();
             $table->date('tgl_bayar')->nullable();
-            $table->string('bulan_dibayar',8)->nullable();
+            $table->string('bulan_dibayar',11)->nullable();
             $table->string('tahun_dibayar',4)->nullable();
             $table->foreignId('id_spp',11)->nullable();
             $table->integer('jumlah_bayar')->default(0);

@@ -27,6 +27,7 @@
           <div class="card glass-card">
             <div class="card-header">
               <a href="{{ asset('') }}spp/create" class="btn float-left tombol-tambah mt-2">Tambah SPP</a>
+              <a href="{{ asset('') }}cetak-spp" target="blank_" class="btn ml-2 float-left tombol-tambah mt-2">Cetak SPP</a>
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/spp" method="get">
                     @csrf

@@ -26,7 +26,8 @@
         <div class="col-12">
           <div class="card glass-card">
             <div class="card-header">
-              <a href="{{ asset('') }}siswa/create" class="btn float-left tombol-tambah mt-2">Tambah Siswa</a>
+                <a href="{{ asset('') }}siswa/create" class="btn float-left tombol-tambah mt-2">Tambah Siswa</a>
+                <a href="{{ asset('') }}cetak-siswa" target="blank_" class="btn ml-2 float-left tombol-tambah mt-2">Cetak Siswa</a>
               {{-- <p class="btn float-left tombol-tambah mt-2" data-toggle="modal" data-target="#modal-lg">Tambah Siswa</p> --}}
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-3 float-right" action="/siswa" method="get">

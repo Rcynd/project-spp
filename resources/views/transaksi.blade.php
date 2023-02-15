@@ -27,6 +27,9 @@
           <div class="card glass-card">
             <div class="card-header">
               <a href="{{ asset('') }}transaksi/create" class="btn float-left tombol-tambah mt-2">Tambah Transaksi</a>
+              @can('admin')
+              <p class="btn float-left ml-2 tombol-tambah mt-2" data-toggle="modal" data-target="#modal-lg">Cetak Transaksi</p>
+              @endcan
 
                   <form class="input-group input-group-sm col-lg-5 mr-2 mt-2 float-right" action="/transaksi" method="get">
                     @csrf
@@ -106,4 +109,48 @@
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+  <div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Cetak data Siswa</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="/cetak-transaksi" class="" enctype="multipart/form-data">
+            @csrf
+          <div class="card-body">
+            <div class="form-group">
+              <label for="id_siswa">Nama Siswa</label>
+              @error('id_siswa')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
+              <select class="form-control"name="id_siswa">
+                @foreach ($siswass as $siswa)
+                @if (old('id_siswa') == $siswa->id)
+                <option value="{{ $siswa->id }}" selected>{{ $siswa->nama}}</option>
+                @else
+                <option value="{{ $siswa->id }}">{{ $siswa->nama}}</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
+          <!-- /.card-body -->
+
+          <div class="">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Cetak</button>
+        </div>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 @endsection

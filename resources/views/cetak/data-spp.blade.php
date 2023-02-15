@@ -8,8 +8,8 @@
     
 @foreach ($spps as $spp)
 <tr>
-    <td>{{ $spp->Tahun }}</td>
-    <td>{{ $spp->Nominal }}</td>
+    <td>{{ $spp->tahun }}</td>
+    <td>Rp.{{ number_format($spp->nominal) }}</td>
     <td>{{ $spp->kelas->nama_kelas }}</td>
 </tr>
 @endforeach

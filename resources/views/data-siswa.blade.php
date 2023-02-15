@@ -50,7 +50,7 @@
                     <th>alamat</th>
                     <th>no_telp</th>
                     {{-- <th>id_spp</th> --}}
-                    <th>aksi</th>
+                    <th class="text-right">aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,7 +63,7 @@
                       <td>{{ $siswa->alamat }}</td>
                       <td>{{ $siswa->no_telp }}</td>
                       {{-- <td>{{ $siswa->id_spp }}</td> --}}
-                      <td class="d-flex justify-content-center">
+                      <td class="d-flex justify-content-end">
                         <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                             <a href="{{ asset('') }}siswa/edit/{{ $siswa->nisn }}" class="dropdown-item">

@@ -29,14 +29,22 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nama_petugas' => 'Rian Muhammad Afriansyah',
             'email' => 'rianma1333@gmail.com',
-            'username' => 'Rian',
+            'username' => 'Admin',
             'password' => bcrypt('password'),
             'level' => 'admin',
             'email_verified_at' => now(),
         ]);
+        User::create([
+            'nama_petugas' => 'Rian Muhammad Petugas',
+            'email' => 'rianma@gmail.com',
+            'username' => 'Petugas',
+            'password' => bcrypt('password'),
+            'level' => 'petugas',
+            'email_verified_at' => now(),
+        ]);
 
         // Siswa Seeder
-        Siswa::factory(20)->create();
+        // Siswa::factory(20)->create();
 
         // Petugas Seeder
         User::factory(10)->create();

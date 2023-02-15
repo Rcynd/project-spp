@@ -41,6 +41,29 @@ class SiswaController extends Controller
         $nominals = Spp::where('id', $validateData['id_spp'])->first();
         $id_now = Siswa::orderBy('id','desc')->first();
         $bulan = array("januari", "februari", "maret","april","mei","juni","juli","agustus","september","oktober","november","desember");
+        if(!isset($id_now->id)){
+            for ($i=0; $i <12 ; $i++) { 
+                Transaksi::create([
+                    'id_petugas' => Auth()->user()->id,
+                    'id_siswa' => 1,
+                    'tgl_bayar' => now(),
+                    'id_spp' => $validateData['id_spp'],
+                    'bulan_dibayar' => $bulan[$i],
+                    'jumlah_bayar' => 0,
+                ]);
+            }
+        } else{
+            for ($i=0; $i <12 ; $i++) { 
+                Transaksi::create([
+                    'id_petugas' => Auth()->user()->id,
+                    'id_siswa' => $id_now->id + 1,
+                    'tgl_bayar' => now(),
+                    'id_spp' => $validateData['id_spp'],
+                    'bulan_dibayar' => $bulan[$i],
+                    'jumlah_bayar' => 0,
+                ]);
+            }
+        }
         Siswa::create($validateData);
         User::create([
             'nama_petugas' => $validateData['nama'],
@@ -48,16 +71,6 @@ class SiswaController extends Controller
             'password' => bcrypt('password'),
             'level' => 'siswa'
         ]);
-        for ($i=0; $i <12 ; $i++) { 
-            Transaksi::create([
-                'id_petugas' => Auth()->user()->id,
-                'id_siswa' => $id_now->id + 1,
-                'tgl_bayar' => now(),
-                'id_spp' => $validateData['id_spp'],
-                'bulan_dibayar' => $bulan[$i],
-                'jumlah_bayar' => 0,
-            ]);
-        }
         return redirect('/siswa')->with('sukses','Data Siswa berhasil diTambahkan!');
     }
     public function edit($nisn){

@@ -56,7 +56,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/siswa/create', [SiswaController::class, 'store']);
     Route::get('/siswa/edit/{siswa:nisn}', [SiswaController::class, 'edit']);
     Route::post('/siswa/edit/{siswa:nisn}', [SiswaController::class, 'update']);
-    Route::get('/siswa/hapus/{siswa:nisn}', [SiswaController::class, 'destroy']);
+    Route::get('/siswa/hapus/{siswa:nis}', [SiswaController::class, 'destroy']);
     
     // Data Petugas
     Route::get('/petugas', [PetugasController::class, 'index']);

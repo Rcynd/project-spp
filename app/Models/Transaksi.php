@@ -32,4 +32,7 @@ class Transaksi extends Model
     public function spp(){
         return $this->belongsTo(Spp::class, 'id_spp');
     }
+    public function kelas(){
+        return $this->belongsTo(Spp::class, 'id_kelas');
+    }
 }

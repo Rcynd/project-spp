@@ -9,6 +9,13 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+  @if (session()->has('sukses'))
+  <div class="card bg-danger m-3">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('sukses') }}</p>
+    </div>
+  </div>
+  @endif
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -35,11 +42,26 @@
                           @enderror
                           <input type="text" class="form-control" id="nominal" value="{{ old('nominal') }}" name="nominal" placeholder="Enter nominal">
                         </div>
+                        <div class="form-group">
+                          <label for="kelas">Kelas</label>
+                          @error('id_kelas')
+                            <p class="text-danger">{{ $message }}</p>
+                          @enderror
+                          <select class="form-control"name="id_kelas">
+                            @foreach ($kelass as $kelas)
+                            @if (old('id_kelas') == $kelas->id)
+                            <option value="{{ $kelas->id }}" selected>{{ $kelas->nama_kelas }}</option>
+                            @else
+                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
+                            @endif
+                            @endforeach
+                          </select>
+                        </div>
                       <!-- /.card-body -->
       
                       <div class="">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a class="btn btn-primary float-right" href="{{ asset('') }}spp">Kembali</a>
+                        <a class="btn btn-primary" href="{{ asset('') }}spp">Kembali</a>
+                        <button type="submit" class="btn btn-success float-right">Submit</button>
                       </div>
                     </form>
                   </div>

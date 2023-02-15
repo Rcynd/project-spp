@@ -48,7 +48,7 @@
                     <th>Kelas</th>
                     <th>alamat</th>
                     <th>no_telp</th>
-                    <th>id_spp</th>
+                    {{-- <th>id_spp</th> --}}
                     <th>aksi</th>
                   </tr>
                 </thead>
@@ -58,17 +58,17 @@
                       <td>{{ $siswa->nisn }}</td>
                       <td>{{ $siswa->nis }}</td>
                       <td>{{ $siswa->nama }}</td>
-                      <td>{{ $siswa->kelas->nama_kelas }}</td>
+                      <td>{{ $siswa->spp->kelas->nama_kelas }}</td>
                       <td>{{ $siswa->alamat }}</td>
                       <td>{{ $siswa->no_telp }}</td>
-                      <td>{{ $siswa->id_spp }}</td>
+                      {{-- <td>{{ $siswa->id_spp }}</td> --}}
                       <td class="d-flex justify-content-center">
                         <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                             <a href="{{ asset('') }}siswa/edit/{{ $siswa->nisn }}" class="dropdown-item">
                                 Edit
                             </a>
-                            <a href="{{ asset('') }}siswa/hapus/{{ $siswa->nisn }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
+                            <a href="{{ asset('') }}siswa/hapus/{{ $siswa->nis }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                 Hapus
                             </a>
                         </div>

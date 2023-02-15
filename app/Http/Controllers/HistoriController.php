@@ -9,6 +9,13 @@ use App\Models\Siswa;
 class HistoriController extends Controller
 {
     public function index(){
+        if (Auth()->user()->level == 'siswa') {
+            $idSiswa = Siswa::where('nis',Auth()->user()->username)->first();
+            return view('histori',[
+                'transaksis' => Transaksi::where('id_siswa',$idSiswa->id)->get(),
+                'siswa' => Siswa::where('nisn',$idSiswa->nisn)->orWhere('nis',$idSiswa->nis)->first()
+            ]);
+        }
         return view('histori',[
         ]);
     }

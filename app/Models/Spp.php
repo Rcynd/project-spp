@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Spp extends Model
 {
@@ -16,5 +17,8 @@ class Spp extends Model
             ->orWhere('nominal','like', '%' . $search . '%')
             ;
         });
+    }
+    public function kelas(){
+        return $this->belongsTo(Kelas::class ,'id_kelas');
     }
 }

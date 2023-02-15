@@ -9,6 +9,13 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+  @if (session()->has('sukses'))
+  <div class="card bg-danger m-3">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('sukses') }}</p>
+    </div>
+  </div>
+  @endif
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -44,9 +51,9 @@
                           <select class="form-control"name="id_siswa">
                             @foreach ($siswas as $siswa)
                             @if (old('id_siswa') == $siswa->id)
-                            <option value="{{ $siswa->id }}" selected>{{ $siswa->nama }}</option>
+                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}" selected>{{ $siswa->nama }}</option>
                             @else
-                            <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}">{{ $siswa->nama }} | {{ $siswa->spp->kelas->nama_kelas }} | Rp.{{ number_format($siswa->spp->nominal) }} | bayaran perbulan = Rp.{{ number_format($siswa->spp->nominal / 12) }}</option>
                             @endif
                             @endforeach
                         </select>
@@ -59,19 +66,24 @@
                           <input type="date" class="form-control" id="tgl_bayar" value="{{ old('tgl_bayar') }}" name="tgl_bayar" placeholder="Enter tgl_bayar">
                         </div>
                         <div class="form-group">
-                          <label for="spp">SPP</label>
-                          @error('id_spp')
+                          <label for="bulan_dibayar">Bulan diBayar</label>
+                          @error('bulan_dibayar')
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
-                          <select class="form-control"name="id_spp">
-                            @foreach ($spps as $spp)
-                            @if (old('id_spp') == $spp->id)
-                            <option value="{{ $spp->id }}" selected>{{ $spp->tahun }} | Rp{{ number_format($spp->nominal) }}</option>
-                            @else
-                            <option value="{{ $spp->id }}">{{ $spp->tahun }} | Rp{{ number_format($spp->nominal) }}</option>
-                            @endif
-                            @endforeach
-                        </select>
+                          <select class="form-control"name="bulan_dibayar">
+                            <option value="januari">januari</option>
+                            <option value="februari">februari</option>
+                            <option value="maret">maret</option>
+                            <option value="april">april</option>
+                            <option value="mei">mei</option>
+                            <option value="juni">juni</option>
+                            <option value="juli">juli</option>
+                            <option value="agustus">agustus</option>
+                            <option value="september">september</option>
+                            <option value="oktober">oktober</option>
+                            <option value="november">november</option>
+                            <option value="desember">desember</option>
+                          </select>
                         </div>
                         <div class="form-group">
                           <label for="jumlah_bayar">Jumlah bayar</label>
@@ -83,8 +95,8 @@
                       <!-- /.card-body -->
       
                       <div class="">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a class="btn btn-primary float-right" href="{{ asset('') }}transaksi">Kembali</a>
+                        <a class="btn btn-primary" href="{{ asset('') }}transaksi">Kembali</a>
+                        <button type="submit" class="btn btn-success float-right">Submit</button>
                       </div>
                     </form>
                   </div>

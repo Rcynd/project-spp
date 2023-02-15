@@ -24,4 +24,7 @@ class Siswa extends Model
     public function kelas(){
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
+    public function spp(){
+        return $this->belongsTo(Spp::class, 'id_spp');
+    }
 }

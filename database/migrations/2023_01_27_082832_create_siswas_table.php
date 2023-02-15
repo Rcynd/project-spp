@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nisn',10);
             $table->string('nis',8);
             $table->string('nama',35);
-            $table->foreignId('id_kelas',11);
+            $table->foreignId('id_kelas',11)->nullable();
             $table->text('alamat');
             $table->string('no_telp',13);
             $table->foreignId('id_spp',11);

@@ -43,6 +43,7 @@
                   <tr>
                     <th>Tahun</th>
                     <th>Nominal</th>
+                    <th>Kelas</th>
                     <th class="text-right">aksi</th>
                   </tr>
                 </thead>
@@ -50,7 +51,8 @@
                     @foreach ($spps as $spp)
                     <tr>
                       <td>{{ $spp->tahun }}</td>
-                      <td>{{ $spp->nominal }}</td>
+                      <td>{{ number_format($spp->nominal) }}</td>
+                      <td>{{ $spp->kelas->nama_kelas }}</td>
                       <td class="d-flex justify-content-end">
                         <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
                         <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_petugas',11);
             $table->foreignId('id_siswa',10);
+            $table->foreignId('id_kelas',10)->nullable();
             $table->date('tgl_bayar')->nullable();
             $table->string('bulan_dibayar',8)->nullable();
             $table->string('tahun_dibayar',4)->nullable();

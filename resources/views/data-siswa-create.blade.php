@@ -43,19 +43,19 @@
                           <input type="text" class="form-control" id="nama" value="{{ old('nama') }}" name="nama" placeholder="Enter nama">
                         </div>
                         <div class="form-group">
-                          <label for="kelas">Kelas</label>
-                          @error('id_kelas')
+                          <label for="spp">Kelas</label>
+                          @error('id_spp')
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
-                          <select class="form-control"name="id_kelas">
-                            @foreach ($kelass as $kelas)
-                            @if (old('id_kelas') == $kelas->id)
-                            <option value="{{ $kelas->id }}" selected>{{ $kelas->nama_kelas }}</option>
+                          <select class="form-control"name="id_spp">
+                            @foreach ($spps as $spp)
+                            @if (old('id_spp') == $spp->id)
+                            <option value="{{ $spp->id }}" selected>{{ $spp->kelas->nama_kelas }}</option>
                             @else
-                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
+                            <option value="{{ $spp->id }}">{{ $spp->kelas->nama_kelas }}</option>
                             @endif
                             @endforeach
-                        </select>
+                          </select>
                         </div>
                         <div class="form-group">
                             <label for="alamat">alamat</label>
@@ -71,18 +71,26 @@
                           @enderror
                           <input type="text" class="form-control" id="no_telp" value="{{ old('no_telp') }}" name="no_telp" placeholder="Enter no_telp">
                         </div>
-                        <div class="form-group">
-                          <label for="spp">SPP</label>
+                        {{-- <div class="form-group">
+                          <label for="spp">spp</label>
                           @error('id_spp')
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
-                          <input type="text" class="form-control" id="spp" value="{{ old('id_spp') }}" name="id_spp" placeholder="Enter spp">
-                        </div>
+                          <select class="form-control"name="id_spp">
+                            @foreach ($spps as $spp)
+                            @if (old('id_spp') == $spp->id)
+                            <option value="{{ $spp->id }}" selected>{{ $spp->tahun }}</option>
+                            @else
+                            <option value="{{ $spp->id }}">{{ $spp->tahun }}</option>
+                            @endif
+                            @endforeach
+                          </select>
+                        </div> --}}
                       <!-- /.card-body -->
       
                       <div class="">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a class="btn btn-primary float-right" href="{{ asset('') }}siswa">Kembali</a>
+                        <a class="btn btn-primary" href="{{ asset('') }}siswa">Kembali</a>
+                        <button type="submit" class="btn btn-success float-right">Submit</button>
                       </div>
                     </form>
                   </div>

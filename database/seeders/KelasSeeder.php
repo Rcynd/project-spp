@@ -75,35 +75,29 @@ class KelasSeeder extends Seeder
         //         'kompetensi_keahlian' => 'Akuntansi',
         //     ]);
         // }
-        for ($i=1; $i <= 4 ; $i++) { 
             Kelas::create([
-                'nama_kelas' => "XII RPL $i",
+                'nama_kelas' => "XII RPL",
                 'kompetensi_keahlian' => 'Rekayasa Perangkat Lunak',
             ]);
-        }
-        for ($i=1; $i <= 3 ; $i++) { 
             Kelas::create([
-                'nama_kelas' => "XII ANM $i",
+                'nama_kelas' => "XI RPL",
+                'kompetensi_keahlian' => 'Rekayasa Perangkat Lunak',
+            ]);
+            Kelas::create([
+                'nama_kelas' => "X RPL",
+                'kompetensi_keahlian' => 'Rekayasa Perangkat Lunak',
+            ]);
+            Kelas::create([
+                'nama_kelas' => "XII ANM",
                 'kompetensi_keahlian' => 'Animasi',
             ]);
-        }
-        for ($i=1; $i <= 3 ; $i++) { 
             Kelas::create([
-                'nama_kelas' => "XII DKV $i",
-                'kompetensi_keahlian' => 'Desain Komunikasi Visual',
+                'nama_kelas' => "XI ANM",
+                'kompetensi_keahlian' => 'Animasi',
             ]);
-        }
-        for ($i=1; $i <= 2 ; $i++) { 
             Kelas::create([
-                'nama_kelas' => "XII BDP $i",
-                'kompetensi_keahlian' => 'Pemasaran',
+                'nama_kelas' => "X ANM",
+                'kompetensi_keahlian' => 'Animasi',
             ]);
-        }
-        for ($i=1; $i <= 3 ; $i++) { 
-            Kelas::create([
-                'nama_kelas' => "XII AKT $i",
-                'kompetensi_keahlian' => 'Akuntansi',
-            ]);
-        }
     }
 }

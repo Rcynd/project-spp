@@ -23,16 +23,30 @@ class TransaksiController extends Controller
         ]);
     }
     public function store(Request $request){
-        $nominals = Spp::where('id', request()->id_spp)->first();
+        $siswa=explode(",", request()->id_siswa);
+        $nominals = Spp::where('id', $siswa[1])->first();
+        $transaksi = Transaksi::where('id_siswa' , $siswa[0])->first();
         $validateData = $request->validate([
             'id_petugas' => 'required|max:255',
-            'id_siswa' => 'required|max:255',
+            'id_siswa' => '',
             'tgl_bayar' => 'required',
-            'id_spp' => 'required',
-            'jumlah_bayar' => "required|numeric|max:$nominals->nominal",
+            'id_spp' => '',
+            'bulan_dibayar' => 'required',
+            'jumlah_bayar' => "numeric|max:$nominals->nominal",
         ]);
-        Transaksi::create($validateData);
-        return redirect('/transaksi')->with('sukses','Data Siswa berhasil diTambahkan!');
+        $validateData['id_siswa'] = $siswa[0];
+        $validateData['id_spp'] = $siswa[1];
+        // dd($transaksi->id_spp);
+        if($transaksi == null){
+            Transaksi::create($validateData);
+            return redirect('/transaksi')->with('sukses','Data Siswa berhasil diTambahkan s!');
+        } elseif($transaksi->id_spp != request()->id_spp) {
+            Transaksi::create($validateData);
+            return redirect('/transaksi')->with('sukses','Data Siswa berhasil diTambahkan!');
+        }else{
+            return back()->with('sukses','Data siswa sudah ada');
+
+        }
     }
     public function edit($id){
         $dataTransaksi = Transaksi::where('id',$id)->first();
@@ -47,7 +61,7 @@ class TransaksiController extends Controller
             'id_spp' => 'required',
             'jumlah_harus_bayar' => 'required|numeric',
             'jumlah_sudah_bayar' => 'required|numeric',
-            'jumlah_bayar' => 'required|numeric',
+            'jumlah_bayar' => 'numeric',
         ]);
         if ($request->jumlah_sudah_bayar + $request->jumlah_bayar > $request->jumlah_harus_bayar) {
             return back()->with('sukses','Jumlah bayar melebihi angka seharusnya!');

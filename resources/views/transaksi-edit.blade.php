@@ -22,7 +22,7 @@
         <div class="col-12">
           <div class="card glass-card">
             <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
+            <div class="card-body table-responsive p-3">
                 <div class="">
                     <!-- form start -->
                     <form method="post" action="/transaksi/edit/{{ $transaksi->id }}" class="mb-5" enctype="multipart/form-data">
@@ -53,8 +53,8 @@
                       <!-- /.card-body -->
                       
                       <div class="">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a class="btn btn-primary float-right" href="{{ asset('') }}transaksi">Kembali</a>
+                        <a class="btn btn-primary " href="{{ asset('') }}transaksi">Kembali</a>
+                        <button type="submit" class="btn btn-success float-right">Submit</button>
                       </div>
                       </form>
                   </div>

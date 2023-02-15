@@ -48,6 +48,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SppSeeder::class);
 
         // Transaksi Seeder
-        Transaksi::factory(10)->create();
+        // Transaksi::factory(10)->create();
     }
 }

@@ -38,8 +38,8 @@
                       <!-- /.card-body -->
       
                       <div class="">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a class="btn btn-primary float-right" href="{{ asset('') }}spp">Kembali</a>
+                        <a class="btn btn-primary" href="{{ asset('') }}spp">Kembali</a>
+                        <button type="submit" class="btn btn-success float-right">Submit</button>
                       </div>
                     </form>
                   </div>

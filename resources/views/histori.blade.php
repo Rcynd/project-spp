@@ -26,19 +26,20 @@
         <div class="col-12">
           <div class="card glass-card">
             <div class="card-header">
-
-                  <form class="input-group input-group-sm col-lg-12 mr-2 mt-2 float-right" action="/histori" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="cari berdasarkan NISN atau NIS" name="searcha" autofocus>
-                        <button class="btn btn-default" type="submit" ><i class="fas fa-search"></i></button>
-                    </div>
-                  </form>
+              @if (Auth()->user()->level != 'siswa')
+              <form class="input-group input-group-sm col-lg-12 mr-2 mt-2 float-right" action="/histori" method="post">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="cari berdasarkan NISN atau NIS" name="searcha" autofocus>
+                    <button class="btn btn-default" type="submit" ><i class="fas fa-search"></i></button>
+                </div>
+              </form>
+              @endif
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
               @if (isset($siswa))
-              <div class="card col-lg-6">
+              <div class=" col-lg-6">
                 <div class="card-body d-flex justify-content-between">
                   <div class="">
                     <p class="card-text">NISN</p>
@@ -50,7 +51,7 @@
                     <p class="card-text">: {{ $siswa->nisn }}</p>
                     <p class="card-text">: {{ $siswa->nis }}</p>
                     <p class="card-text">: {{ $siswa->nama }}</p>
-                    <p class="card-text">: {{ $siswa->kelas->nama_kelas }} | {{ $siswa->kelas->kompetensi_keahlian }} </p>
+                    <p class="card-text">: {{ $siswa->spp->kelas->nama_kelas }} | {{ $siswa->spp->kelas->kompetensi_keahlian }} </p>
                   </div>
                 </div>
               </div>

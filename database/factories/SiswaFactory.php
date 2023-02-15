@@ -23,7 +23,7 @@ class SiswaFactory extends Factory
             'id_kelas' => mt_rand(1,5),
             'alamat' => fake()->address(),
             'no_telp' =>fake()->numerify('08###########'),
-            'id_spp' => mt_rand(1,10),
+            'id_spp' => mt_rand(1,3),
         ];
     }
 }

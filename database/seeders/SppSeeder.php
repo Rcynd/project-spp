@@ -15,13 +15,12 @@ class SppSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=2023; $i <=2028 ; $i++) { 
+        for ($i=2023; $i <=2025 ; $i++) { 
             $b = $i+1;
             $c = " - " .$b;
             Spp::create([
-                'id_kelas' => $i - 2022,
-                'tahun' => "2023",
-                'nominal' => fake()->unique()->numerify('6#0000'),
+                'tahun' => $i,
+                'nominal' => fake()->unique()->numerify('##0000'),
             ]);
         }
     }

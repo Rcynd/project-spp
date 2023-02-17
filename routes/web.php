@@ -47,6 +47,10 @@ Route::middleware('petugas')->group(function(){
     Route::post('/transaksi/reset/{transaksi:id}', [TransaksiController::class, 'reset']);
     Route::get('/transaksi/hapus/{transaksi:id}', [TransaksiController::class, 'destroy']);
     Route::get('/transaksi/lunas/{transaksi:id}', [TransaksiController::class, 'bayarLunas']);
+
+    Route::post('/histori/resets/{transaksi:id}', [TransaksiController::class, 'resets']);
+    Route::get('/histori/hapuss/{transaksi:id}', [TransaksiController::class, 'destroys']);
+    Route::get('/histori/lunass/{transaksi:id}', [TransaksiController::class, 'bayarLunass']);
     
     
 });
@@ -58,7 +62,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/siswa/create', [SiswaController::class, 'store']);
     Route::get('/siswa/edit/{siswa:nisn}', [SiswaController::class, 'edit']);
     Route::post('/siswa/edit/{siswa:nisn}', [SiswaController::class, 'update']);
-    Route::get('/siswa/hapus/{siswa:nis}', [SiswaController::class, 'destroy']);
+    Route::get('/siswa/hapus/{siswa:data}', [SiswaController::class, 'destroy']);
     
     // Data Petugas
     Route::get('/petugas', [PetugasController::class, 'index']);

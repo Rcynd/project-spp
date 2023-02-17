@@ -51,7 +51,7 @@
                     <p class="card-text">: {{ $siswa->nisn }}</p>
                     <p class="card-text">: {{ $siswa->nis }}</p>
                     <p class="card-text">: {{ $siswa->nama }}</p>
-                    <p class="card-text">: {{ $siswa->spp->kelas->nama_kelas }} | {{ $siswa->spp->kelas->kompetensi_keahlian }} </p>
+                    <p class="card-text">: {{ $siswa->kelas->nama_kelas }} | {{ $siswa->kelas->kompetensi_keahlian }} </p>
                   </div>
                 </div>
               </div>
@@ -65,6 +65,9 @@
                     <th>Jumlah bayar</th>
                     <th>bulan dibayar</th>
                     <th>Status</th>
+                    @can('petugas')
+                    <th>aksi</th>
+                    @endcan
                   </tr>
                 </thead>
                 <tbody>
@@ -83,6 +86,30 @@
                             <p class="text-danger">BELUM LUNAS</p>
                         @endif
                       </td>
+                      @can('petugas')
+                      <td class="d-flex justify-content-end">
+                        <a class="nav-link text-dark btn bg-hitam tombol-tambah p-2" data-toggle="dropdown" href="#" aria-expanded="false"></a>
+                        <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
+                          @if ($transaksi->spp->nominal == $transaksi->jumlah_bayar)
+                          <form class="m-0 p-0" method="post" action="/histori/resets/{{ $transaksi->id }},{{ $transaksi->siswa->id }}" class="mb-5" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id_petugas" value="{{ Auth()->user()->id }}">
+                            <input type="hidden" name="id_spp" value="{{ $transaksi->spp->id }}">
+                            <button type="submit" class="dropdown-item" onclick="return confirm(' Reset Data? \n Data yang Reset tidak bisa dikembalikan!')">reset</button>
+                          </form>
+                          @else
+                          @endif
+                          @if ($transaksi->jumlah_bayar == 0)
+                          <a href="{{ asset('') }}histori/lunass/{{ $transaksi->id }},{{ $transaksi->siswa->id }}" class="dropdown-item">
+                              Bayar Lunas
+                          </a>
+                          @endif
+                            <a href="{{ asset('') }}histori/hapuss/{{ $transaksi->id }},{{ $transaksi->siswa->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
+                                Hapus
+                            </a>
+                        </div>
+                      </td>
+                      @endcan
                     </tr>
                     @endforeach
                 </tbody>

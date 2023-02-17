@@ -26,7 +26,6 @@ class PetugasController extends Controller
         $validateData = $request->validate([
             'nama_petugas' => 'required|max:255',
             'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
             'password' => 'required|same:ulangi_password',
         ]);
         $validateData['password'] = bcrypt($request->password);
@@ -47,7 +46,6 @@ class PetugasController extends Controller
         $validateData = $request->validate([
             'nama_petugas' => 'required|max:255',
             'username' => 'required',
-            'email' => 'required',
             'password' => 'same:ulangi_password'
         ]);
         if (isset($validateData['password'])) {
@@ -59,7 +57,6 @@ class PetugasController extends Controller
         User::where('id',$id)->update([
             'nama_petugas' => $validateData['nama_petugas'],
             'username' => $validateData['username'],
-            'email' => $validateData['email']
             ]
         );
         return redirect('/petugas')->with('sukses','Data Petugas berhasil diUbah!');

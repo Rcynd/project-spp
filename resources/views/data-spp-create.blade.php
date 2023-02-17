@@ -42,21 +42,6 @@
                           @enderror
                           <input type="text" class="form-control" id="nominal" value="{{ old('nominal') }}" name="nominal" placeholder="Enter nominal">
                         </div>
-                        <div class="form-group">
-                          <label for="kelas">Kelas</label>
-                          @error('id_kelas')
-                            <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                          <select class="form-control"name="id_kelas">
-                            @foreach ($kelass as $kelas)
-                            @if (old('id_kelas') == $kelas->id)
-                            <option value="{{ $kelas->id }}" selected>{{ $kelas->nama_kelas }}</option>
-                            @else
-                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
-                            @endif
-                            @endforeach
-                          </select>
-                        </div>
                       <!-- /.card-body -->
       
                       <div class="">

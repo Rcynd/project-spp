@@ -14,7 +14,7 @@
 <tr>
     <td>{{ $transaksi->petugas->nama_petugas }}</td>
     <td>{{ $transaksi->siswa->nama }}</td>
-    <td>{{ $transaksi->spp->kelas->nama_kelas }}</td>
+    <td>{{ $transaksi->siswa->kelas->nama_kelas }}</td>
     <td>{{ $transaksi->tgl_bayar }}</td>
     <td>{{ $transaksi->bulan_dibayar }}</td>
     <td>Rp.{{ number_format($transaksi->jumlah_bayar) }}</td>

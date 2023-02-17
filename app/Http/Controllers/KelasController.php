@@ -25,7 +25,7 @@ class KelasController extends Controller
     }
     public function store(Request $request){
         $validateData = $request->validate([
-            'nama_kelas' => 'required|max:255',
+            'nama_kelas' => 'required|max:255|unique:kelas',
             'kompetensi_keahlian' => 'required',
         ]);
         Kelas::create($validateData);

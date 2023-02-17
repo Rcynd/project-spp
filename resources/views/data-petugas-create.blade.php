@@ -49,13 +49,6 @@
                           @enderror
                           <input type="password" class="form-control" id="ulangi_password" value="{{ old('ulangi_password') }}" name="ulangi_password" placeholder="Enter ulangi_password">
                         </div>
-                        <div class="form-group">
-                          <label for="email">Email </label>
-                          @error('email')
-                            <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                          <input type="email" class="form-control" id="email" value="{{ old('email') }}" name="email" placeholder="Enter email">
-                        </div>
                       <!-- /.card-body -->
       
                       <div class="">

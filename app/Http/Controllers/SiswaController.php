@@ -35,40 +35,41 @@ class SiswaController extends Controller
             'nis' => 'required|unique:siswas|numeric|digits:8',
             'nama' => 'required|max:255',
             'id_spp' => 'required',
+            'id_kelas' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required|numeric|digits_between:11,13',
         ]);
-        $nominals = Spp::where('id', $validateData['id_spp'])->first();
-        $id_now = Siswa::orderBy('id','desc')->first();
-        $bulan = array("januari", "februari", "maret","april","mei","juni","juli","agustus","september","oktober","november","desember");
-        if(!isset($id_now->id)){
-            for ($i=0; $i <12 ; $i++) { 
-                Transaksi::create([
-                    'id_petugas' => Auth()->user()->id,
-                    'id_siswa' => 1,
-                    'tgl_bayar' => now(),
-                    'id_spp' => $validateData['id_spp'],
-                    'bulan_dibayar' => $bulan[$i],
-                    'jumlah_bayar' => 0,
-                ]);
-            }
-        } else{
-            for ($i=0; $i <12 ; $i++) { 
-                Transaksi::create([
-                    'id_petugas' => Auth()->user()->id,
-                    'id_siswa' => $id_now->id + 1,
-                    'tgl_bayar' => now(),
-                    'id_spp' => $validateData['id_spp'],
-                    'bulan_dibayar' => $bulan[$i],
-                    'jumlah_bayar' => 0,
-                ]);
-            }
-        }
+        // $nominals = Spp::where('id', $validateData['id_spp'])->first();
+        // $id_now = Siswa::orderBy('id','desc')->first();
+        // $bulan = array("januari", "februari", "maret","april","mei","juni","juli","agustus","september","oktober","november","desember");
+        // if(!isset($id_now->id)){
+        //     for ($i=0; $i <12 ; $i++) { 
+        //         Transaksi::create([
+        //             'id_petugas' => Auth()->user()->id,
+        //             'id_siswa' => 1,
+        //             'tgl_bayar' => now(),
+        //             'id_spp' => $validateData['id_spp'],
+        //             'bulan_dibayar' => $bulan[$i],
+        //             'jumlah_bayar' => 0,
+        //         ]);
+        //     }
+        // } else{
+        //     for ($i=0; $i <12 ; $i++) { 
+        //         Transaksi::create([
+        //             'id_petugas' => Auth()->user()->id,
+        //             'id_siswa' => $id_now->id + 1,
+        //             'tgl_bayar' => now(),
+        //             'id_spp' => $validateData['id_spp'],
+        //             'bulan_dibayar' => $bulan[$i],
+        //             'jumlah_bayar' => 0,
+        //         ]);
+        //     }
+        // }
         Siswa::create($validateData);
         User::create([
             'nama_petugas' => $validateData['nama'],
-            'username' => $validateData['nis'],
-            'password' => bcrypt('password'),
+            'username' => $validateData['nisn'],
+            'password' => bcrypt($validateData['nis']),
             'level' => 'siswa'
         ]);
         return redirect('/siswa')->with('sukses','Data Siswa berhasil diTambahkan!');
@@ -79,6 +80,7 @@ class SiswaController extends Controller
             'nisn' => $nisn,
             'siswa' => $dataSiswa,
             'spps' => Spp::all(),
+            'kelass' => Kelas::all(),
         ]);
     }
     public function update(Request $request, $nisn){
@@ -89,19 +91,23 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'no_telp' => 'required|numeric|digits_between:1,13',
             'id_spp' => 'required',
+            'id_kelas' => 'required',
         ]);
         Siswa::where('nisn',$nisn)->update($validateData);
         User::where('username',request()->nis)->update([
             'nama_petugas' => $validateData['nama'],
-            'username' => $validateData['nis'],
-            'password' => bcrypt('password'),
+            'username' => $validateData['nisn'],
+            'password' => bcrypt($validateData['nis']),
             'level' => 'siswa'
         ]);
         return redirect('/siswa')->with('sukses','Data Siswa berhasil diUbah!');
     }
-    public function destroy($nis){
-        Siswa::where('nis',$nis)->delete();
-        User::where('username',$nis)->delete();
+    public function destroy($data){
+        $siswa = explode(',',$data);
+        Siswa::where('nis',$siswa[0])->delete();
+        User::where('username',$siswa[0])->delete();
+        // Transaksi::where('id_siswa',$siswa[1])->delete();
+        
         return redirect('/siswa')->with('sukses','Data Siswa berhasil diHapus!');
     }
 }

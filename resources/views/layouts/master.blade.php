@@ -71,9 +71,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  {{-- <div class="preloader flex-column justify-content-center align-items-center">
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTELogo" height="60" width="60">
-  </div> --}}
+  </div>
 
   <!-- Navbar -->
   @include('layouts.mainbar')

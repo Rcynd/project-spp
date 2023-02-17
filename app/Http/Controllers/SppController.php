@@ -24,18 +24,10 @@ class SppController extends Controller
         ]);
     }
     public function store(Request $request){
-        $sppkan = Spp::where('id_kelas', request()->id_kelas)->first();
         $validateData = $request->validate([
-            'id_kelas' => 'required|numeric',
-            'tahun' => 'required',
+            'tahun' => 'required|unique:spps',
             'nominal' => 'required|numeric',
         ]);
-        if($sppkan == null){
-            Spp::create($validateData);
-            return redirect('/spp')->with('sukses','Data SPP berhasil diTambahkan!');
-        }elseif($sppkan->tahun == $validateData['tahun'] && $sppkan->id_kelas == $validateData['id_kelas']){
-            return back()->with('sukses','Data SPP sudah ada');
-        }
         Spp::create($validateData);
         return redirect('/spp')->with('sukses','Data SPP berhasil diTambahkan!');
     }

@@ -28,21 +28,7 @@
                     <form method="post" action="/transaksi/create" class="mb-5" enctype="multipart/form-data">
                         @csrf
                       <div class="card-body">
-                        <div class="form-group">
-                          <label for="nama_petugas">Nama petugas</label>
-                          @error('nama_petugas')
-                            <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                          <select class="form-control"name="id_petugas">
-                            @foreach ($petugass as $petugas)
-                            @if (Auth()->user()->id == $petugas->id)
-                            <option value="{{ Auth()->user()->id }}" selected>{{ Auth()->user()->nama_petugas }}</option>
-                            @else
-                            <option value="{{ $petugas->id }}">{{ $petugas->nama_petugas }}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                        </div>
+                        <input type="hidden" name="id_petugas" value="{{ auth()->user()->id }}">
                         <div class="form-group">
                           <label for="nama_siswa">Nama siswa</label>
                           @error('nama_siswa')
@@ -51,20 +37,14 @@
                           <select class="form-control"name="id_siswa">
                             @foreach ($siswas as $siswa)
                             @if (old('id_siswa') == $siswa->id)
-                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}" selected>{{ $siswa->nama }}</option>
+                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }},{{ $siswa->kelas->id }}" selected>{{ $siswa->nama }} | {{ $siswa->kelas->nama_kelas }} | Jumlah Bayar = Rp.{{ number_format($siswa->spp->nominal) }}</option>
                             @else
-                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }}">{{ $siswa->nama }} | {{ $siswa->spp->kelas->nama_kelas }} | bulanan Rp.{{ number_format($siswa->spp->nominal) }}</option>
+                            <option value="{{ $siswa->id }},{{ $siswa->spp->id }},{{ $siswa->kelas->id }}">{{ $siswa->nama }} | {{ $siswa->kelas->nama_kelas }} | Jumlah Bayar = Rp.{{ number_format($siswa->spp->nominal) }}</option>
                             @endif
                             @endforeach
                         </select>
                         </div>
-                        <div class="form-group">
-                          <label for="tgl_bayar">Bulan/Tanggal/Tahun bayar</label>
-                          @error('tgl_bayar')
-                            <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                          <input type="date" class="form-control" id="tgl_bayar" value="{{ old('tgl_bayar') }}" name="tgl_bayar" placeholder="Enter tgl_bayar">
-                        </div>
+                        <input type="hidden" name="tgl_bayar" value="{{ now() }}">
                         <div class="form-group">
                           <label for="bulan_dibayar">Bulan diBayar</label>
                           @error('bulan_dibayar')
@@ -85,18 +65,11 @@
                             <option value="desember">desember</option>
                           </select>
                         </div>
-                        <div class="form-group">
-                          <label for="jumlah_bayar">Jumlah bayar</label>
-                          @error('jumlah_bayar')
-                            <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                          <input type="text" class="form-control" id="jumlah_bayar" value="{{ old('jumlah_bayar') }}" name="jumlah_bayar" placeholder="Enter jumlah_bayar">
-                        </div>
                       <!-- /.card-body -->
       
                       <div class="">
                         <a class="btn btn-primary" href="{{ asset('') }}transaksi">Kembali</a>
-                        <button type="submit" class="btn btn-success float-right">Submit</button>
+                        <button type="submit" class="btn btn-success float-right">Bayar</button>
                       </div>
                     </form>
                   </div>

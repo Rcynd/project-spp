@@ -59,7 +59,7 @@
                       <td>{{ $siswa->nisn }}</td>
                       <td>{{ $siswa->nis }}</td>
                       <td>{{ $siswa->nama }}</td>
-                      <td>{{ $siswa->spp->kelas->nama_kelas }}</td>
+                      <td>{{ $siswa->kelas->nama_kelas }}</td>
                       <td>{{ $siswa->alamat }}</td>
                       <td>{{ $siswa->no_telp }}</td>
                       {{-- <td>{{ $siswa->id_spp }}</td> --}}
@@ -69,7 +69,7 @@
                             <a href="{{ asset('') }}siswa/edit/{{ $siswa->nisn }}" class="dropdown-item">
                                 Edit
                             </a>
-                            <a href="{{ asset('') }}siswa/hapus/{{ $siswa->nis }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
+                            <a href="{{ asset('') }}siswa/hapus/{{ $siswa->nis }},{{ $siswa->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                 Hapus
                             </a>
                         </div>

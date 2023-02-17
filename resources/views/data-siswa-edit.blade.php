@@ -43,16 +43,16 @@
                           <input type="text" class="form-control" id="nama" value="{{ old('nama', $siswa->nama) }}" name="nama" placeholder="Enter nama">
                         </div>
                         <div class="form-group">
-                          <label for="spp">Kelas</label>
-                          @error('id_spp')
+                          <label for="kelas">Kelas</label>
+                          @error('id_kelas')
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
-                          <select class="form-control"name="id_spp">
-                            @foreach ($spps as $spp)
-                            @if (old('id_spp', $siswa->spp->id) == $spp->id)
-                            <option value="{{ $spp->id }}" selected>{{ $spp->kelas->nama_kelas }}</option>
+                          <select class="form-control"name="id_kelas">
+                            @foreach ($kelass as $kelas)
+                            @if (old('id_kelas', $siswa->kelas->id) == $kelas->id)
+                            <option value="{{ $kelas->id }}" selected>{{ $kelas->nama_kelas }}</option>
                             @else
-                            <option value="{{ $spp->id }}">{{ $spp->kelas->nama_kelas }}</option>
+                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
                             @endif
                             @endforeach
                         </select>
@@ -70,6 +70,21 @@
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
                           <input type="text" class="form-control" id="no_telp" value="{{ old('no_telp', $siswa->no_telp) }}" name="no_telp" placeholder="Enter no_telp">
+                        </div>
+                        <div class="form-group">
+                          <label for="spp">SPP</label>
+                          @error('id_spp')
+                            <p class="text-danger">{{ $message }}</p>
+                          @enderror
+                          <select class="form-control"name="id_spp">
+                            @foreach ($spps as $spp)
+                            @if (old('id_spp', $siswa->spp->id) == $spp->id)
+                            <option value="{{ $spp->id }}" selected>{{ $spp->tahun }}</option>
+                            @else
+                            <option value="{{ $spp->id }}">{{ $spp->tahun }}</option>
+                            @endif
+                            @endforeach
+                        </select>
                         </div>
                       <!-- /.card-body -->
       

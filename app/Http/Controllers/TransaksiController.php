@@ -34,15 +34,19 @@ class TransaksiController extends Controller
         $nominals = Spp::where('id', $siswa[1])->first();
         $transaksi = Transaksi::where('id_siswa' , $siswa[0])->first();
         $validateData = $request->validate([
-            'id_petugas' => 'required|max:255',
+            'id_petugas' => '',
             'id_siswa' => '',
-            'tgl_bayar' => 'required',
+            'tgl_bayar' => '',
             'id_spp' => '',
+            'id_kelas' => '',
             'bulan_dibayar' => 'required',
-            'jumlah_bayar' => "numeric|max:$nominals->nominal",
+            'jumlah_bayar' => '',
         ]);
         $validateData['id_siswa'] = $siswa[0];
         $validateData['id_spp'] = $siswa[1];
+        $validateData['id_kelas'] = $siswa[2];
+        $validateData['jumlah_bayar'] = $nominals->nominal;
+        $validateData['tgl_bayar'] = now();
         // dd($transaksi->id_spp);
         if($transaksi == null){
             Transaksi::create($validateData);
@@ -91,6 +95,21 @@ class TransaksiController extends Controller
         ]);
         return redirect('/transaksi')->with('sukses','Transaksi berhasil diBayar!');
     }
+    public function bayarLunass(Request $request, $id){
+        $siswa = explode(',',$id);
+        $bayar = Transaksi::where('id',$siswa[0])->first();
+        $dataSiswa = Siswa::where('id',$siswa[1])->first();
+        Transaksi::where('id',$siswa[0])->update([
+            'jumlah_bayar' => $bayar->spp->nominal,
+            'tgl_bayar' => now(),
+            'id_spp' => $bayar->spp->id,
+            'id_petugas' => auth()->user()->id,
+        ]);
+        return view('histori',[
+            'transaksis' => Transaksi::where('id_siswa',$siswa[1])->get(),
+            'siswa' => $dataSiswa,
+        ])->with('sukses','Transaksi berhasil diBayar!');
+    }
     public function reset(Request $request, $id){
         $nominals = Spp::where('id', request()->id_spp)->first();
         $validateData = $request->validate([
@@ -104,8 +123,35 @@ class TransaksiController extends Controller
         ]);
         return redirect('/transaksi')->with('sukses','Transaksi berhasil diReset!');
     }
+    public function resets(Request $request, $id){
+        $siswa = explode(',',$id);
+        $nominals = Spp::where('id', request()->id_spp)->first();
+        $dataSiswa = Siswa::where('id',$siswa[1])->first();
+        $validateData = $request->validate([
+            'id_petugas' => 'required',
+            'id_spp' => 'required',
+        ]);
+        Transaksi::where('id',$siswa[0])->update([
+            'jumlah_bayar' => 0,
+            'id_spp' => $validateData['id_spp'],
+            'id_petugas' => $validateData['id_petugas'],
+        ]);
+        return view('histori',[
+            'transaksis' => Transaksi::where('id_siswa',$siswa[1])->get(),
+            'siswa' => $dataSiswa,
+        ])->with('sukses','Transaksi berhasil diReset!');
+    }
     public function destroy($id){
         Transaksi::where('id',$id)->delete();
         return redirect('/transaksi')->with('sukses','Data Transaksi berhasil diHapus!');
+    }
+    public function destroys($id){
+        $siswa = explode(',',$id);
+        $dataSiswa = Siswa::where('id',$siswa[1])->first();
+        Transaksi::where('id',$siswa[0])->delete();
+        return view('histori',[
+            'transaksis' => Transaksi::where('id_siswa',$siswa[1])->get(),
+            'siswa' => $dataSiswa,
+        ])->with('sukses','Data Transaksi berhasil diHapus!');
     }
 }

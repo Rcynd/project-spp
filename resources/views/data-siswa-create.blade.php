@@ -43,16 +43,16 @@
                           <input type="text" class="form-control" id="nama" value="{{ old('nama') }}" name="nama" placeholder="Enter nama">
                         </div>
                         <div class="form-group">
-                          <label for="spp">Kelas</label>
-                          @error('id_spp')
+                          <label for="kelas">Kelas</label>
+                          @error('id_kelas')
                             <p class="text-danger">{{ $message }}</p>
                           @enderror
-                          <select class="form-control"name="id_spp">
-                            @foreach ($spps as $spp)
-                            @if (old('id_spp') == $spp->id)
-                            <option value="{{ $spp->id }}" selected>{{ $spp->kelas->nama_kelas }}</option>
+                          <select class="form-control"name="id_kelas">
+                            @foreach ($kelass as $kelas)
+                            @if (old('id_kelas') == $kelas->id)
+                            <option value="{{ $kelas->id }}" selected>{{ $kelas->nama_kelas }}</option>
                             @else
-                            <option value="{{ $spp->id }}">{{ $spp->kelas->nama_kelas }}</option>
+                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
                             @endif
                             @endforeach
                           </select>
@@ -71,7 +71,7 @@
                           @enderror
                           <input type="text" class="form-control" id="no_telp" value="{{ old('no_telp') }}" name="no_telp" placeholder="Enter no_telp">
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                           <label for="spp">spp</label>
                           @error('id_spp')
                             <p class="text-danger">{{ $message }}</p>
@@ -79,13 +79,13 @@
                           <select class="form-control"name="id_spp">
                             @foreach ($spps as $spp)
                             @if (old('id_spp') == $spp->id)
-                            <option value="{{ $spp->id }}" selected>{{ $spp->tahun }}</option>
+                            <option value="{{ $spp->id }}" selected>{{ $spp->tahun }} | Rp.{{ number_format($spp->nominal) }}</option>
                             @else
-                            <option value="{{ $spp->id }}">{{ $spp->tahun }}</option>
+                            <option value="{{ $spp->id }}">{{ $spp->tahun }} | Rp.{{ number_format($spp->nominal) }}</option>
                             @endif
                             @endforeach
                           </select>
-                        </div> --}}
+                        </div>
                       <!-- /.card-body -->
       
                       <div class="">

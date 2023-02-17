@@ -14,7 +14,7 @@
     <td>{{ $siswa->nisn }}</td>
     <td>{{ $siswa->nis }}</td>
     <td>{{ $siswa->nama }}</td>
-    <td>{{ $siswa->spp->kelas->nama_kelas }}</td>
+    <td>{{ $siswa->kelas->nama_kelas }}</td>
     <td>{{ $siswa->alamat }}</td>
     <td>{{ $siswa->no_telp }}</td>
 </tr>

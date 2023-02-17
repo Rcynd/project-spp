@@ -60,7 +60,7 @@
                     <tr>
                       <td>{{ $transaksi->petugas->nama_petugas }}</td>
                       <td>{{ $transaksi->siswa->nama }}</td>
-                      <td>{{ $transaksi->spp->kelas->nama_kelas }}</td>
+                      <td>{{ $transaksi->siswa->kelas->nama_kelas }}</td>
                       <td>{{ $transaksi->tgl_bayar }}</td>
                       <td>{{ $transaksi->spp->tahun }} | Rp{{number_format( $transaksi->spp->nominal) }}</td>
                       <td>Rp{{ number_format($transaksi->jumlah_bayar) }}</td>
@@ -83,12 +83,12 @@
                             <button type="submit" class="dropdown-item" onclick="return confirm(' Reset Data? \n Data yang Reset tidak bisa dikembalikan!')">reset</button>
                           </form>
                           @else
-                            <a href="{{ asset('') }}transaksi/edit/{{ $transaksi->id }}" class="dropdown-item">
+                            {{-- <a href="{{ asset('') }}transaksi/edit/{{ $transaksi->id }}" class="dropdown-item">
                               Bayar
-                            </a>
+                            </a> --}}
                           @endif
                           @if ($transaksi->jumlah_bayar == 0)
-                          <a href="{{ asset('') }}transaksi/lunas/{{ $transaksi->id }}" class="dropdown-item" onclick="return confirm(' Lunasi Transaksi?')">
+                          <a href="{{ asset('') }}transaksi/lunas/{{ $transaksi->id }}" class="dropdown-item">
                               Bayar Lunas
                           </a>
                           @endif
